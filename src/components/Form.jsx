@@ -15,24 +15,25 @@ function Form(props) {
                     min="6"
                     max="20"
                     default="15"
+                    onChange={props.onLengthChange}
                 />
                 <Checkbox
                     label="Include uppercase letters"
                     checked={true}
-                    onChange={() => props.onChange(upper)}
+                    onChange={() => props.onOptionChange(upper)}
                 />
                 <Checkbox
                     label="Include lowercase letters"
                     checked={true}
-                    onChange={() => props.onChange(lower)}
+                    onChange={() => props.onOptionChange(lower)}
                 />
                 <Checkbox
                     label="Include numbers"
-                    onChange={() => props.onChange(numbers)}
+                    onChange={() => props.onOptionChange(numbers)}
                 />
                 <Checkbox
                     label="Include symbols"
-                    onChange={() => props.onChange(symbols)}
+                    onChange={() => props.onOptionChange(symbols)}
                 />
             </div>
         </div>

@@ -19,14 +19,15 @@ class App extends React.Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        this.handleOptionChange = this.handleOptionChange.bind(this);
+        this.handleLengthChange = this.handleLengthChange.bind(this);
     }
 
     handleClick() {
         this.setState({ password: this.generatePassword() });
     }
 
-    handleChange(chars) {
+    handleOptionChange(chars) {
         if (this.state.allowedChars.includes(chars)) {
             this.setState(state => ({
                 allowedChars: state.allowedChars.replace(chars, ""),
@@ -36,6 +37,11 @@ class App extends React.Component {
                 allowedChars: state.allowedChars + chars,
             }));
         }
+    }
+
+    handleLengthChange(e) {
+        let newLength = e.target.value;
+        this.setState({ length: newLength });
     }
 
     generatePassword() {
@@ -57,7 +63,10 @@ class App extends React.Component {
                 </h1>
                 <div className="flex flex-col items-center justify-center mt-16 mb-12">
                     <Password password={this.state.password} />
-                    <Form onChange={this.handleChange} />
+                    <Form
+                        onOptionChange={this.handleOptionChange}
+                        onLengthChange={this.handleLengthChange}
+                    />
                     <Button
                         text="Generate password"
                         onClick={this.handleClick}
