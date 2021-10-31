@@ -2,7 +2,10 @@
 
 A website for generating passwords that lets users pick the length (from 6-20)
 of their password as well as the types of characters (uppercase letters,
-lowercase letters, numbers and symbols) that should be in it. The project is
+lowercase letters, numbers and symbols) that should be in it. It also lets
+users copy a generated password to the clipboard by clicking on it.
+
+The project is
 based on the requirements
 [here](https://github.com/florinpop17/app-ideas/blob/master/Projects/2-Intermediate/Password-Generator.md).
 
