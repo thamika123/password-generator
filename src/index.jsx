@@ -7,8 +7,6 @@ import Button from "./components/Button";
 
 const lower = "abcdefghijklmnopqrstuvwxyz";
 const upper = lower.toUpperCase();
-const numbers = "0123456789";
-const symbols = "!@#$%^&*();/.,\\`<>[]{}'\"?";
 
 class App extends React.Component {
     constructor(props) {
@@ -21,10 +19,23 @@ class App extends React.Component {
         };
 
         this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     handleClick() {
         this.setState({ password: this.generatePassword() });
+    }
+
+    handleChange(chars) {
+        if (this.state.allowedChars.includes(chars)) {
+            this.setState(state => ({
+                allowedChars: state.allowedChars.replace(chars, ""),
+            }));
+        } else {
+            this.setState(state => ({
+                allowedChars: state.allowedChars + chars,
+            }));
+        }
     }
 
     generatePassword() {
@@ -46,7 +57,7 @@ class App extends React.Component {
                 </h1>
                 <div className="flex flex-col items-center justify-center mt-16 mb-12">
                     <Password password={this.state.password} />
-                    <Form />
+                    <Form onChange={this.handleChange} />
                     <Button
                         text="Generate password"
                         onClick={this.handleClick}

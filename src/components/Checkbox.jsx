@@ -1,6 +1,6 @@
 function Checkbox(props) {
     return (
-        <div className="mt-4">
+        <div className="mt-4" onChange={props.onChange}>
             <label className="inline-flex items-center">
                 <input
                     type="checkbox"
