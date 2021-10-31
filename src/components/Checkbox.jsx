@@ -4,7 +4,7 @@ function Checkbox(props) {
             <label className="inline-flex items-center">
                 <input
                     type="checkbox"
-                    className="rounded bg-gray-200 border-none"
+                    className="rounded bg-gray-200 border-none text-purple-500 focus:ring-purple-500"
                     defaultChecked={props.checked}
                     onChange={props.onChange}
                 />
