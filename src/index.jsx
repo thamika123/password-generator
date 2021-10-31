@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import Password from "./components/Password";
 import Form from "./components/Form";
 import Button from "./components/Button";
+import Notification from "./components/Notification";
 
 const lower = "abcdefghijklmnopqrstuvwxyz";
 const upper = lower.toUpperCase();
@@ -16,11 +17,13 @@ class App extends React.Component {
             password: undefined,
             length: 15,
             allowedChars: `${lower}${upper}`,
+            notificationVisible: false,
         };
 
         this.handleClick = this.handleClick.bind(this);
         this.handleOptionChange = this.handleOptionChange.bind(this);
         this.handleLengthChange = this.handleLengthChange.bind(this);
+        this.copyPassword = this.copyPassword.bind(this);
     }
 
     handleClick() {
@@ -44,6 +47,12 @@ class App extends React.Component {
         this.setState({ length: newLength });
     }
 
+    copyPassword() {
+        navigator.clipboard.writeText(this.state.password);
+        this.setState({ notificationVisible: true });
+        setTimeout(() => this.setState({ notificationVisible: false }), 1000);
+    }
+
     generatePassword() {
         // This code is based on https://stackoverflow.com/a/51540480/16027708
         let array = new Uint32Array(this.state.length);
@@ -58,11 +67,15 @@ class App extends React.Component {
     render() {
         return (
             <div>
+                {this.state.notificationVisible && <Notification />}
                 <h1 className="md:mt-40 mt-40 text-4xl font-sans font-extrabold text-gray-700 text-center">
                     Password Generator
                 </h1>
                 <div className="flex flex-col items-center justify-center mt-16 mb-12">
-                    <Password password={this.state.password} />
+                    <Password
+                        password={this.state.password}
+                        onClick={this.copyPassword}
+                    />
                     <Form
                         onOptionChange={this.handleOptionChange}
                         onLengthChange={this.handleLengthChange}
