@@ -20,7 +20,7 @@ function Icon() {
 function Password(props) {
     return (
         <div
-            className="bg-gray-50 md:w-144 min-w-80 rounded-2xl shadow-lg px-8 py-8 mb-12"
+            className="bg-gray-50 md:w-144 w-96 rounded-2xl shadow-lg px-8 py-8 mb-12"
             onClick={props.onClick}
         >
             <h2 className="text-lg text-gray-700">Generated password:</h2>

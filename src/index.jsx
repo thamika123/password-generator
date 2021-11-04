@@ -68,7 +68,7 @@ class App extends React.Component {
         return (
             <div>
                 {this.state.notificationVisible && <Notification />}
-                <h1 className="md:mt-40 mt-40 text-4xl font-sans font-extrabold text-gray-700 text-center">
+                <h1 className="mt-32 md:mt-40 text-4xl font-sans font-extrabold text-gray-700 text-center">
                     Password Generator
                 </h1>
                 <div className="flex flex-col items-center justify-center mt-16 mb-12">
